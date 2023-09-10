@@ -66,44 +66,44 @@ object test {
 //    }while (j < 5)
 //  }
 
-  def main(args: Array[String]): Unit = {
-    // 1.2.3 --> for循环  $nbsp --> 重点
-    // for (变量 <- 表达式) 语句块  "变量 <- 表达式"被称为生成器(generator)
-    for (i <- 1 to 5) {
-      println(i)
-    }
-    println("nbspnbspnbspnbsp")
-    for (i <- 1 to 5 by 2) {
-      println(i)
-    }
-
-/*    不希望打印出所有的结果，过滤出一些满足制定条件的结
-    果，需要使用到称为“守卫(guard)”的表达式
-    ●比如，只输出1到5之中的所有偶数，可以采用以下语句:*/
-    println("nbspnbspnbspnbsp")
-    for (i <- 1 to 5 if i%2 == 0) {
-      println(i)
-    }
-
-    // Scla 也支持"多个生成器的情形"，用分号把它们分开
-    println("nbspnbspnbspnbsp")
-    for (i <- 1 to 5 if i%2 == 0;j <- 1 to 2 if j != i) {
-      println(i*j)
-    }
-
-/*  ●Scala的for结构可以在每次执行的时候创造一个值，然后
-    将包含了所有产生值的集合作为for循环表达式的结果返回，
-    集合的类型由生成器中的集合类型确定
-    ●通过for循环遍历一个或多个集合，对集合中的元素进行“推
-    导”，从而计算得到新的集合，用于后续的其他处理
-    for (变量 <-表达式)  yield { 语句块}  */
-    println("nbspnbspnbspnbsp")
-    val res = for (i <- 1 to 5 if i%2 == 0) yield {println(i);i}
-    println(res.length)
-    println(res.head)
-    // 返回除头元素后构成的新列表
-    println(res.tail)
-    // apply(index)根据下标取集合或数组中的第index个元素
-    println(res.apply(0))
-  }
+//  def main(args: Array[String]): Unit = {
+//    // 1.2.3 --> for循环  $nbsp --> 重点
+//    // for (变量 <- 表达式) 语句块  "变量 <- 表达式"被称为生成器(generator)
+//    for (i <- 1 to 5) {
+//      println(i)
+//    }
+//    println("nbspnbspnbspnbsp")
+//    for (i <- 1 to 5 by 2) {
+//      println(i)
+//    }
+//
+///*    不希望打印出所有的结果，过滤出一些满足制定条件的结
+//    果，需要使用到称为“守卫(guard)”的表达式
+//    ●比如，只输出1到5之中的所有偶数，可以采用以下语句:*/
+//    println("nbspnbspnbspnbsp")
+//    for (i <- 1 to 5 if i%2 == 0) {
+//      println(i)
+//    }
+//
+//    // Scla 也支持"多个生成器的情形"，用分号把它们分开
+//    println("nbspnbspnbspnbsp")
+//    for (i <- 1 to 5 if i%2 == 0;j <- 1 to 2 if j != i) {
+//      println(i*j)
+//    }
+//
+///*  ●Scala的for结构可以在每次执行的时候创造一个值，然后
+//    将包含了所有产生值的集合作为for循环表达式的结果返回，
+//    集合的类型由生成器中的集合类型确定
+//    ●通过for循环遍历一个或多个集合，对集合中的元素进行“推
+//    导”，从而计算得到新的集合，用于后续的其他处理
+//    for (变量 <-表达式)  yield { 语句块}  */
+//    println("nbspnbspnbspnbsp")
+//    val res = for (i <- 1 to 5 if i%2 == 0) yield {println(i);i}
+//    println(res.length)
+//    println(res.head)
+//    // 返回除头元素后构成的新列表
+//    println(res.tail)
+//    // apply(index)根据下标取集合或数组中的第index个元素
+//    println(res.apply(0))
+//  }
 }
