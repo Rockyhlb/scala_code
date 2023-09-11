@@ -35,23 +35,23 @@ package com.hlb
  * */
 
 object test {
-//  def main(args: Array[String]): Unit = {
-//    // 2.2.1 --> 单例对象  &nbsp&nbsp
-//    /*
-//      Scala并没有提供Java那样的静态方法或静态字段，但是，可以采用
-//      object关键字实现单例对象，具备和Java静态方法同样的功能。
-//  */
-//    // 和类的定义很相似，只是关键字不一样
-//    object Read {
-//      private val age: Int = 0
-//
-//      def info(): Unit = {
-//        println("my age is: " + age)
-//      }
-//    }
-//    Read.info();
-//  }
-//}
+  //  def main(args: Array[String]): Unit = {
+  //    // 2.2.1 --> 单例对象  &nbsp&nbsp
+  //    /*
+  //      Scala并没有提供Java那样的静态方法或静态字段，但是，可以采用
+  //      object关键字实现单例对象，具备和Java静态方法同样的功能。
+  //  */
+  //    // 和类的定义很相似，只是关键字不一样
+  //    object Read {
+  //      private val age: Int = 0
+  //
+  //      def info(): Unit = {
+  //        println("my age is: " + age)
+  //      }
+  //    }
+  //    Read.info();
+  //  }
+  //}
 
   //  // 2.2.2 --> 伴生对象
   //  /*
@@ -100,15 +100,97 @@ object test {
   //}
 
 
+  //  def main(args: Array[String]): Unit = {
+  //    // 2.2.3 --> 应用程序对象
+  ///*
+  //    每个Scala应用程序都必须从一个对象的main方法开始
+  //    为了运行代码，我们在Linux shell中有两种不同的办法
+  //    一、直接用scala命令运行得到结果
+  //      scala test.scala
+  //    二、先编译再执行
+  //      scalac test-9.11.scala
+  //      scala -classpath . test(object name) // 执行时使用的是对象名称
+  //*/
+  //  }
+  //}
+
+
   def main(args: Array[String]): Unit = {
-    // 2.2.3 --> 应用程序对象
+    // 2.2.4 --> apply方法和 update方法
+    /*
+    我们经常会用到对象的apply方法和update方法,虽然我们表面上并没
+    有察觉，但是，实际上，在Scala中， apply方法和update方法都会遵循相关的约定被调用，约定如下:
+    ● 用括号传递给变量(对象)-一个或多个参数时，Scala会把它转换成对
+    apply方法的调用
+    ● 当对带有括号并包括一到若干参数的对象进行赋值时，编译器将调用
+    对象的update方法，在调用时，是把括号里的参数和等号右边的对象
+    一起作为update方法的输入参数来执行调用
+*/
+    //    class testApply {
+    //      def apply(string: String): String = {
+    //        println("apply method is called,str is: " + string)
+    //        "hello scala"
+    //      }
+    //    }
+    //    val testApply1 = new testApply()
+    //    println(testApply1("Java"))
 
+    //    // 上面是类中定义apply方法，下面试下在单例对象中定义apply方法
+    //    object testApply {
+    //      def apply(string: String): String = {
+    //        println("apply method is called")
+    //        string
+    //      }
+    //    }
+    //    val testApply2 = testApply("Scala")
+    //    println(testApply2)
 
+    //    // 下面我们测试一个半生类和伴生对象中的apply方法的实例
+    //    // 先调用伴生对象中的apply方法
+    //    val testApply3 = testApply()
+    //    testApply3.greetingOfClass
+    //    testApply3()
+    //  }
+    //  // 伴生类
+    //  class testApply {
+    //    def apply() = {
+    //      println("Apply method in class is called")
+    //    }
+    //    def greetingOfClass = {
+    //      println("Greeting method is called in class")
+    //    }
+    //  }
+    //
+    //  // 伴生对象
+    //  object testApply {
+    //    def apply() = {
+    //      println("Apply method in object is called")
+    //      new testApply()
+    //    }
+    //  }
+
+    /*
+    由于Scala中的Array对象定义了apply方法
+    也就是说，不需要new关键字，不用构造器，直接给对象传递3个参
+    数，Scala就会转换成对apply方法的调用，也就是调用Array类的伴
+    生对象Array的apply方法，完成数组的初始化。
+*/
+    //    val myStrArr = Array("BigData","Hadoop" , "Spark")
+    //    for (str <- myStrArr) {
+    //      println(str);
+    //    }
+
+    // 实际上，update方法也是类似的，比如:
+    val myStrArr = new Array[String](3) //声明一个长度为3的字符串数组，每个数组元素初始化为null
+    myStrArr(0) = "BigData" //实际上，调用了伴生类Array中的update方法，执行myStrArr . update(0, "BigData")
+    myStrArr(1) = "Hadoop" //实际上，调用了伴生类Array中的update方法，执行myStrArr . update(1, "Hadoop")
+    myStrArr(2) = "Spark" //实际上，调用了伴生类Array中的update方法，执行myStrArr . update(2,"Spark")
+
+    myStrArr.foreach(println)
   }
 }
+/*  从上面可以看出，在进行元组赋值的时候，之所以没有采用Java中的方括号myStrArr[0]，而是采用圆括号的形式，myStrArr(O)，
+    是因为存在上述的update方法的机制。
+    ●用括号传递给变量(对象)一个或多个参数时，Scala 会把它转换成对apply方法的调用当对带有括号并包括一到若干参数的对象进行赋值时，
+    编译器将调用对象的update方法，在调用时，是把括号里的参数和等号右边的对象一起作为update方法的输入参数来执行调用*/
 
-
-//  def main(args: Array[String]): Unit = {
-//    // 2.2.4 --> apply方法和 update方法
-//  }
-//}
