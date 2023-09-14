@@ -1,7 +1,14 @@
 package com.hlb
 
-object test {
+/**
+ * 2.4 主要介绍面向对象编程基础中的 “特质”
+ * Created by IntelliJ IDEA.
+ * User: 麦田里的乌鸦
+ * Date: 2023 / 9 / 14
+ * Time: 16：00
+ **/
 
+object test {
   //                          _ooOoo_                          //\n\
   //                         o8888888o                         //\n\
   //                         88\" . \"88                         //\n\
@@ -186,34 +193,34 @@ object test {
 //     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^     //\n\
 //           佛祖保佑       永不宕机     永无BUG             //\n\
 
-//  def main(args: Array[String]): Unit = {
-//    // 2.4.5 --> 把多个特质混入类中  ~~~extends ... with~~~
-//    val peo = new firstPeople()
-//    peo.age = 20
-//    peo.greeting("hello fistPeople: ")
-//    println("my age is: " + peo.currentAge())
-//  }
-//}
-//
-//trait PeopleGreeting {
-//  def greeting(msg:String) {
-//    println(msg)
-//  }
-//}
-//
-//trait PeopleInfo {
-//  // 抽象字段
-//  var age:Int
-//  // 抽象方法(不需要使用abstract关键字)
-//  def currentAge(): Int
-//}
-//
-//class firstPeople extends PeopleGreeting with PeopleInfo {
-//  override var age: Int = 13
-//
-//  override def currentAge(): Int = {
-//    age += 5
-//    age
-//  }
+  def main(args: Array[String]): Unit = {
+    // 2.4.5 --> 把多个特质混入类中  ~~~extends ... with~~~
+    val peo = new firstPeople()
+    peo.age = 20
+    peo.greeting("hello fistPeople: ")
+    println("my age is: " + peo.currentAge())
+  }
+}
+
+trait PeopleGreeting {
+  def greeting(msg:String) {
+    println(msg)
+  }
+}
+
+trait PeopleInfo {
+  // 抽象字段
+  var age:Int
+  // 抽象方法(不需要使用abstract关键字)
+  def currentAge(): Int
+}
+
+class firstPeople extends PeopleGreeting with PeopleInfo {
+  override var age: Int = 13
+
+  override def currentAge(): Int = {
+    age += 5
+    age
+  }
 }
 
