@@ -31,7 +31,7 @@ object test {
   //           佛祖保佑       永不宕机     永无BUG             //\n\
 
 //    def main(args: Array[String]): Unit = {
-//      // 3.1.1 遍历操作    &nbsp&nbsp
+//      // 3.2.1 遍历操作    &nbsp&nbsp
 //      // 列表的遍历
 //      // for 循环遍历
 //      val list = List(1,2,3,4,5)
@@ -85,7 +85,7 @@ object test {
   //           佛祖保佑       永不宕机     永无BUG             //\n\
 
 //    def main (args: Array[String] ): Unit = {
-//      // 3.1.2 map操作 和 flatMap操作  &nbsp&nbsp
+//      // 3.2.2 map操作 和 flatMap操作  &nbsp&nbsp
 //      // map操作是针对集合的典型变换操作，它将某个函数应用到集合中的每
 //      // 个元素，并产生一个结果集合。  (一对一的转换)
 //      val projects = List("hadoop","hbase","spark")
@@ -127,7 +127,7 @@ object test {
   //           佛祖保佑       永不宕机     永无BUG             //\n\
 
 //    def main(args: Array[String]): Unit = {
-//      // 3.1.3 filter 操作   &nbsp&nbsp
+//      // 3.2.3 filter 操作   &nbsp&nbsp
 //      // 遍历一个集合并从中获取满足指定条件的元素组成一个新的集合。
 //      val map = Map("edu" -> "education","org" -> "organization")
 //      println(map)
@@ -161,7 +161,7 @@ object test {
   //           佛祖保佑       永不宕机     永无BUG             //\n\
 
 //    def main (args: Array[String] ): Unit = {
-//      // 3.1.4 reduce 操作    &nbsp&nbsp
+//      // 3.2.4 reduce 操作    &nbsp&nbsp
 //  /*
 //      可以使用reduce这种二元操作对集合中的元素进行归约
 //      reduce包含reduceLeft和reduceRight两种操作，前者从集合的头部开始操作，后
@@ -198,7 +198,7 @@ object test {
   //           佛祖保佑       永不宕机     永无BUG             //\n\
 
   def main(args: Array[String]): Unit = {
-    // 3.1.5 fold 操作     &nbsp&nbsp
+    // 3.2.5 fold 操作     &nbsp&nbsp
     // 折叠(fold)操作和reduce(归约)操作比较类似。fold操作需要从一个初始的
     // “种子”值开始,并以该值作为上下文,处理集合中的每个元素。
     val list = List(1,2,3,4,5)
