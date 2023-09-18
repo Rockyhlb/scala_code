@@ -1,39 +1,5 @@
 package com.hlb
 
-/**
- * 第2小节主要介绍 面向对象编程基础
- * 具体包含2.1 --> 类
- *          2.1.1 --> 简单的类
- *          2.1.2 --> 给类增加字段和方法
- *          2.1.3 --> 创建对象
- *          2.1.4 --> 编译和执行
- *          2.1.5 --> getter和setter方法
- *          2.1.6 --> 辅助构造器
- *          2.1.7 --> 主构造器
- *        2.2 --> 对象
- *          2.2.1 --> 单例对象
- *          2.2.2 --> 伴生对象
- *          2.2.3 --> 应用程序对象
- *          2.2.4 --> apply方法和update方法
- *        2.3 --> 继承
- *          2.3.1 --> Scala 和 Java 在继承方面的区别
- *          2.3.2 --> 抽象类
- *          2.3.3 --> 扩展类
- *        2.4 --> 特质
- *          2.4.1 --> 特质概述
- *          2.4.2 --> 特质的定义
- *          2.4.3 --> 把特质混入类中
- *          2.4.4 --> 特质可以包含具体实现
- *          2.4.5 --> 把多个特质混入类中
- *        2.5 --> 模式匹配
- *          2.5.1 --> 简单匹配
- *          2.5.2 --> 类型模式
- *          2.5.3 --> "守卫（guard）"语句
- *          2.5.4 --> for表达式中的模式
- *          2.5.5 --> case类的匹配
- *          2.5.6 --> Option类型
- * */
-
 object test {
 
   //                          _ooOoo_                          //\n\
@@ -351,29 +317,29 @@ object test {
   //     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^     //\n\
   //           佛祖保佑       永不宕机     永无BUG             //\n\
 
-//  def main(args: Array[String]): Unit = {
-//    // 2.1.7 --> 主构造器
-///*
-//    ● Scala的每个类都有主构造器。但是，Scala的主构造器和Java有着明显的不同，
-//    Scala的主构造器是整个类体，需要在类名称后面罗列出构造器所需的所
-//    有参数，这些参数被编译成字段，字段的值就是创建对象时传入的参数的值。
-//    ● 对于上面设置name和age的例子，刚才我们是使用辅助构造器来
-//    对name和age的值进行设值，现在我们重新来一次，这次我们转而采用主构
-//    造器来设置name和age的值。
-//*/
-//    val read = new Read("hlb",18)
-//    read.info();
-//    read.increment(2)
-//    println("\nAge is changed? --> " + read.current())
-//    println("Current age is: " + read.age)
-//  }
-//
-//  class Read(val name: String,var age:Int) {
-//    private var mode = false;
-//    def increment(int: Int) {age += int;mode = true}
-//    def current():Boolean = { mode }
-//    def info(): Unit = {
-//      printf("Name is: %s, Age is: %d ",name,age)
-//    }
-//  }
+  def main(args: Array[String]): Unit = {
+    // 2.1.7 --> 主构造器
+/*
+    ● Scala的每个类都有主构造器。但是，Scala的主构造器和Java有着明显的不同，
+    Scala的主构造器是整个类体，需要在类名称后面罗列出构造器所需的所
+    有参数，这些参数被编译成字段，字段的值就是创建对象时传入的参数的值。
+    ● 对于上面设置name和age的例子，刚才我们是使用辅助构造器来
+    对name和age的值进行设值，现在我们重新来一次，这次我们转而采用主构
+    造器来设置name和age的值。
+*/
+    val read = new Read("hlb",18)
+    read.info();
+    read.increment(2)
+    println("\nAge is changed? --> " + read.current())
+    println("Current age is: " + read.age)
+  }
+
+  class Read(val name: String,var age:Int) {
+    private var mode = false;
+    def increment(int: Int) {age += int;mode = true}
+    def current():Boolean = { mode }
+    def info(): Unit = {
+      printf("Name is: %s, Age is: %d ",name,age)
+    }
+  }
 }
