@@ -1,5 +1,13 @@
 package com.hlb
 
+/**
+ * 2.1 主要介绍面向对象编程基础中的 类
+ * Created by IntelliJ IDEA.
+ * User: 麦田里的乌鸦
+ * Date: 2023 / 09 / 13
+ * Time: 15:20
+ **/
+
 object test {
 
   //                          _ooOoo_                          //\n\
@@ -33,6 +41,7 @@ object test {
   //    new Counter()
   //    new Counter
   //  }
+  //}
 
   //                          _ooOoo_                          //\n\
   //                         o8888888o                         //\n\
@@ -57,32 +66,37 @@ object test {
 
   //  def main(args: Array[String]): Unit = {
   //    // 2.1.2 --> 给类增加字段和方法
-  ////    class Print {
-  ////      // 定义的字段和方法
-  ////      private var value = 0;
-  ////      def write(): Unit ={
-  ////        println("value = " + value)
-  ////      }
-  ////      def current(int: Int) {value = int}
-  ////    }
-  //
-  ////    // Unit后面的等号和大括号后面，包含了该方法要执行的具体操作语句
-  ////    //如果大括号里面只有一行语句，那么也可以直接去掉大括号，写成下面的形式:
-  ////    class Print {
-  ////      // 定义的字段和方法
-  ////      private var value = 0;
-  ////      def write(): Unit = println("value = " + value)
-  ////      def current(int: Int) {value = int}
-  ////    }
-  //
-  //    // 或者，还可以去掉返回值类型和等号，只保留大括号，如下:
-  //    class Print {
+  //    class Print1 {
   //      // 定义的字段和方法
   //      private var value = 0;
-  //      def write() {println("value = " + value)}
+  //      def write(): Unit ={
+  //        println("value = " + value)
+  //      }
   //      def current(int: Int) {value = int}
   //    }
+  //
+  //    // Unit后面的等号和大括号后面，包含了该方法要执行的具体操作语句
+  //    //如果大括号里面只有一行语句，那么也可以直接去掉大括号，写成下面的形式:
+  //    class Print2 {
+  //      // 定义的字段和方法
+  //      private var value = 0;
+  //      def write(): Unit = println("value = " + value)
+  //      def current(int: Int) {value = int}
+  //    }
+  //
+  //    // 或者，还可以去掉返回值类型和等号，只保留大括号，如下:
+  //    class Print3 {
+  //      // 定义的字段和方法
+  //      private var value = 0;
+  //      def write() {
+  //        println("value = " + value)
+  //      }
+  //      def current(int: Int) {
+  //        value = int
+  //      }
+  //    }
   //  }
+  //}
 
   //                          _ooOoo_                          //\n\
   //                         o8888888o                         //\n\
@@ -110,15 +124,16 @@ object test {
   //    class Print {
   //      // 定义的字段和方法
   //      private var value = 0;
+  //
   //      def write() {
   //        println("value = " + value)
   //      }
+  //
   //      def current(int: Int) {
   //        value = int
   //        println("current value = " + value)
   //      }
   //    }
-  //
   //    // 新建对象，并调用其中方法，
   //    val pt = new Print()
   //    pt.write()
@@ -127,6 +142,7 @@ object test {
   //    // Scala在调用无参方法时，可以省略圆括号
   //    pt.write
   //  }
+  //}
 
   //                          _ooOoo_                          //\n\
   //                         o8888888o                         //\n\
@@ -186,10 +202,10 @@ object test {
 
   //  def main(args: Array[String]): Unit = {
   //    // 2.1.5 --> getter和setter方法
-  ///*
-  //      ● 给类中的字段设置值以及读取值,在Java中是通过getter和setter方法实现的
-  //      ● 在Scala中，也提供了getter和Isetter方法的实现，但是并没有定义成getXxx和tXxx
-  //*/
+  //    /*
+  //        ● 给类中的字段设置值以及读取值,在Java中是通过getter和setter方法实现的
+  //        ● 在Scala中，也提供了getter和setter方法的实现，但是并没有定义成getXxx和tXxx
+  //  */
   //    val read = new Read()
   //    // 原始值
   //    println("Original value=" + read.value)
@@ -206,16 +222,26 @@ object test {
   //    // 解决方案是，在Scala中,可以通过定义类似getter和setter的方法
   //    // 分别叫做value和value_=，具体如下:
   //    private var privateValue = 0
+  //
   //    // getter 方法
-  //    def value:Int = privateValue
+  //    def value: Int = privateValue
+  //
   //    // setter 方法
-  //    def value_=(newint: Int){
-  //      if (newint > 0 ) {privateValue = newint}
+  //    def value_=(newNum: Int) {
+  //      if (newNum > 0) {
+  //        privateValue = newNum
+  //      }
   //    }
   //
-  //    def increment(int: Int): Unit = { value += int }
-  //    def current(): Int ={value}
+  //    def increment(int: Int): Unit = {
+  //      value += int
+  //    }
+  //
+  //    def current(): Int = {
+  //      value
+  //    }
   //  }
+  //}
 
   //                          _ooOoo_                          //\n\
   //                         o8888888o                         //\n\
@@ -238,63 +264,68 @@ object test {
   //     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^     //\n\
   //           佛祖保佑       永不宕机     永无BUG             //\n\
 
-  //  def main(args: Array[String]): Unit = {
-  //    // 2.1.6 --> 辅助构造器
-  ///*
-  //    ● Scala构造器包含1个主构造器和若干个(0个或多个)辅助构造器
-  //    ● 辅助构造器的名称为this，每个辅助构造器都必须调用一个此前已经定义的
-  //      辅助构造器或主构造器
-  //    ●下面定义一个带有辅助构造器的类，我们对上面的Read类定义进行修改:
-  //*/
-  //
-  //    val firstRead = new Read();  // 主构造器
-  //    // 第一个辅助构造器，只录入姓名
-  //    val secondRead = new Read("hlb");
-  //    // 第二个辅助构造器，录入姓名和年纪
-  //    val thirdRead = new Read("hlb",18);
-  //
-  //    println("This is firstRead:")
-  //    firstRead.increment(18)
-  //    firstRead.info()
-  //    println("辅助构造器信息完整度：" + firstRead.current())
-  //
-  //    println("This is secondRead:")
-  //    secondRead.increment(18)
-  //    secondRead.info()
-  //    println("辅助构造器信息录入完整度：" + secondRead.current())
-  //
-  //    println("This is thirdRead:")
-  //    thirdRead.increment(20)
-  //    thirdRead.info()
-  //    println("辅助构造器录入信息完整度：" + thirdRead.current())
-  //  }
-  //
-  //  class Read {
-  //    private var name = ""
-  //    private var age = 0
-  //    private var mode = false  // 标记是否成功录全信息
-  //
-  //    def this(name: String) {
-  //      // 第一个辅助构造器
-  //      this()  //调用主构造器
-  //      this.name = name
-  //    }
-  //
-  //    def this(name: String,age: Int) {
-  //      // 第一个辅助构造器
-  //      this(name)  //调用前一个辅助构造器
-  //      this.age = age
-  //      this.mode = true
-  //    }
-  //
-  //    def increment(int: Int): Unit = {
-  //      age += int
-  //    }
-  //    def current(): Boolean ={mode}
-  //    def info(): Unit = {
-  //      printf("Name is: %s, Age is: %d ",name,age)
-  //    }
-  //  }
+//  def main(args: Array[String]): Unit = {
+//    // 2.1.6 --> 辅助构造器
+//    /*
+//      ● Scala构造器包含1个主构造器和若干个(0个或多个)辅助构造器
+//      ● 辅助构造器的名称为this，每个辅助构造器都必须调用一个此前已经定义的
+//        辅助构造器或主构造器
+//      ●下面定义一个带有辅助构造器的类，我们对上面的Read类定义进行修改:
+//  */
+//
+//    val mainRead = new Read(); // 主构造器
+//    // 第一个辅助构造器，只录入姓名
+//    val firstRead = new Read("hlb")
+//    // 第二个辅助构造器，录入姓名和年纪
+//    val secondRead = new Read("hlb", 18)
+//
+//    println("This is mainRead:")
+//    mainRead.increment(18)
+//    mainRead.info()
+//    println("主构造器信息完整度：" + mainRead.current())
+//
+//    println("This is firstRead:")
+//    firstRead.increment(18)
+//    firstRead.info()
+//    println("辅助构造器信息录入完整度：" + firstRead.current())
+//
+//    println("This is secondRead:")
+//    secondRead.increment(20)
+//    secondRead.info()
+//    println("辅助构造器录入信息完整度：" + secondRead.current())
+//  }
+//
+//  class Read {
+//    private var name = ""
+//    private var age = 0
+//    private var mode = false // 标记是否成功录全信息
+//
+//    // 第一个辅助构造器
+//    def this(name: String) {
+//      this() //调用主构造器
+//      this.name = name
+//    }
+//
+//    // 第二个辅助构造器
+//    def this(name: String, age: Int) {
+//      this(name) //调用前一个辅助构造器
+//      this.age = age
+//      this.mode = true
+//    }
+//
+//    def increment(int: Int): Unit = {
+//      age += int
+//    }
+//
+//    def current(): Boolean = {
+//      mode
+//    }
+//
+//    def info(): Unit = {
+//      printf("Name is: %s, Age is: %d ", name, age)
+//    }
+//  }
+//}
 
   //                          _ooOoo_                          //\n\
   //                         o8888888o                         //\n\
@@ -328,14 +359,14 @@ object test {
         造器来设置name和age的值。
     */
     val read = new Read("hlb",18)
-    read.info();
+    read.info()
     read.increment(2)
     println("\nAge is changed? --> " + read.current())
     println("Current age is: " + read.age)
   }
 
   class Read(val name: String,var age:Int) {
-    private var mode = false;
+    private var mode = false
     def increment(int: Int) {age += int;mode = true}
     def current():Boolean = { mode }
     def info(): Unit = {
