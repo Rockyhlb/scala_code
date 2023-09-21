@@ -338,54 +338,65 @@ object test {
   //     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^     //\n\
   //           佛祖保佑       永不宕机     永无BUG             //\n\
 
-//  def main(args: Array[String]): Unit = {
-//    // 1.3.6 --> 数组（Array）
-//    /*
-//        数组是一种可变的、可索引的、元素具有相同类型的数据集合，它是各种高
-//        级语言中最常用的数据结构。Scala提供了参数化类型的通用数组类Array[T],
-//        其中T可以是任意的Scala类型，可以通过显式指定类型或者通过隐式推断来
-//        实例化一一个数组。
-//  */
-//    // val firstArray = new Array(3)
-//    val firstArray = new Array[Int](3)
-//    firstArray(0) = 12
-//    firstArray(1) = 34
-//    firstArray(1) = 34
-//    firstArray(2) = 54
-//    firstArray.foreach(int => println(int))
-//    // Array提供了函数ofDim来定义二维和三维数组，用法如下:
-//    // 可靠secondArray(0)(1)取出元素
-//    val secondArray = Array.ofDim[Int](3,4)  // 等价于Array[Array[Int]]
-//    secondArray(0)(0) = 1
-//    secondArray(0)(1) = 2
-//    for (row <- secondArray; element <- row) {
-//      print(element)
-//    }
-//    //      val thirdArray = Array.ofDim(3,2,4)// 等价于Array[[Array[Array[Int]]]
-//
-//    /*      采用Array类型定义的数组属于定长数组，其数组长度
-//        在初始化后就不能改变。如果要定义变长数组，需要
-//        使用ArrayBuffer参数类型，其位于包scala.collection.mutable中。*/
-//    val aMutableArr = scala.collection.mutable.ArrayBuffer(10, 20, 30)
-//    // 使用+=操作符向可变数组aMutableArr添加一个新元素40。相当于执行aMutableArr.append(40)
-//    aMutableArr += 40
-//    // 使用insert方法在可变数组aMutableArr的索引2处插入两个新元素60和40
-//    // 所以最终数组的顺序变为10、20、60、40、30、40。
-//    aMutableArr.insert(2, 60, 40)
-//    // 使用-=操作符从可变数组aMutableArr中移除所有值为40的元素。
-//    // 相当于执行aMutableArr.remove(40)，移除了数组中的元素40。
-//    aMutableArr -= 40
-//    // 移除下标为2的元素
-//    aMutableArr.remove(2)
-//    // 输出 10,20,30,40
-//    println("-----------------------------")
-//    val it = aMutableArr.iterator
-//    while (it.hasNext) {
-//      println(it.next())
-//    }
-//    //      aMutableArr.foreach(int => println(int))
-//  }
-//}
+  def main(args: Array[String]): Unit = {
+    // 1.3.6 --> 数组（Array）
+    /*
+        数组是一种可变的、可索引的、元素具有相同类型的数据集合，它是各种高
+        级语言中最常用的数据结构。Scala提供了参数化类型的通用数组类Array[T],
+        其中T可以是任意的Scala类型，可以通过显式指定类型或者通过隐式推断来
+        实例化一一个数组。
+  */
+    // val firstArray = new Array(3)
+    val firstArray = new Array[Int](3)
+    firstArray(0) = 12
+    firstArray(1) = 34
+    firstArray(1) = 34
+    firstArray(2) = 54
+    firstArray.foreach(int => println(int))
+    // Array提供了函数ofDim来定义二维和三维数组，用法如下:
+    // 可靠secondArray(0)(1)取出元素
+    val secondArray = Array.ofDim[Int](3,4)  // 等价于Array[Array[Int]]
+    secondArray(0)(0) = 1
+    secondArray(0)(1) = 2
+    // 1200 0000 0000
+    for (row <- secondArray; element <- row) {
+      print(element)
+    }
+
+    println
+    // 打印1234 4567
+    val array1 = Array[Int](1,2,3,4)
+    val array2 = Array[Int](4,5,6,7)
+    var thirdArray = Array.ofDim[Int](3, 4) // 等价于Array[Array[Int]]
+    thirdArray = Array(array1,array2)
+    for (row <- thirdArray; element <- row) {
+      print(element)
+    }
+    //      val thirdArray = Array.ofDim(3,2,4)// 等价于Array[[Array[Array[Int]]]
+
+    /*      采用Array类型定义的数组属于定长数组，其数组长度
+        在初始化后就不能改变。如果要定义变长数组，需要
+        使用ArrayBuffer参数类型，其位于包scala.collection.mutable中。*/
+    val aMutableArr = scala.collection.mutable.ArrayBuffer(10, 20, 30)
+    // 使用+=操作符向可变数组aMutableArr添加一个新元素40。相当于执行aMutableArr.append(40)
+    aMutableArr += 40
+    // 使用insert方法在可变数组aMutableArr的索引2处插入两个新元素60和40
+    // 所以最终数组的顺序变为10、20、60、40、30、40。
+    aMutableArr.insert(2, 60, 40)
+    // 使用-=操作符从可变数组aMutableArr中移除所有值为40的元素。
+    // 相当于执行aMutableArr.remove(40)，移除了数组中的元素40。
+    aMutableArr -= 40
+    // 移除下标为2的元素
+    aMutableArr.remove(2)
+    // 输出 10,20,30,40
+    println("\n-----------------------------")
+    val it = aMutableArr.iterator
+    while (it.hasNext) {
+      println(it.next())
+    }
+    //      aMutableArr.foreach(int => println(int))
+  }
+}
 
   //                          _ooOoo_                          //\n\
   //                         o8888888o                         //\n\
