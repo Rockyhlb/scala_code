@@ -32,7 +32,7 @@ object test {
   //           佛祖保佑       永不宕机     永无BUG             //\n\
 
 //  def main(args: Array[String]): Unit = {
-//    // 2.5.1 --> 模式匹配     &nbsp&nbsp
+//    // 2.5.1 --> 简单匹配     &nbsp&nbsp
 //    // Scala的模式匹配最常用于match语句中，下面是简单的整型值的匹配实例
 ////    val colorNum = 3
 ////    val colorStr = colorNum match {
@@ -85,7 +85,7 @@ object test {
 //        case i: Int => i + " is an int value"
 //        case d: Double => d + " is a double value"
 //        case "Scala" => "Scala is found~"
-//        case s:String => s + " Scala is found~"
+//        case s:String => s + " is found~"
 //        case _ => "This is an unexpected value"
 //      }
 //      println(str)
@@ -119,8 +119,8 @@ object test {
 //    // 可以在模式匹配中添加一些必要的处理逻辑
 //    for (elem <- List(1,2,3,4)) {
 //      elem match {
-//        case _ if (elem % 2 == 0) => println(elem + " is even~")
-//        case _  => println(elem + " is odd~")
+//        case _ if (elem % 2 == 0) => println(elem + " is even~")  // 偶数
+//        case _  => println(elem + " is odd~")  // 奇数
 //      }
 //    }
 //  }
@@ -182,9 +182,9 @@ object test {
 //    // 2.5.5 --> case类的匹配  &nbsp&nbsp
 //    // case类是一种特殊的类，它们经过优化以被用于模式匹配。
 //    case class Simple(key: String,value: String)
-//    val simple1 = new Simple("edu","education")
-//    val simple2 = new Simple("org","organization")
-//    val simple3 = new Simple("gov","government")
+//    val simple1 = Simple("edu", "education")
+//    val simple2 = Simple("org","organization")
+//    val simple3 = Simple("gov","government")
 //
 //    for (simple <- List(simple1,simple2,simple3)) {
 //      simple match {
@@ -225,31 +225,31 @@ object test {
       在Java中使用的是null。Scala融合了函数式编程风格，因此，当预计到变量
       或者函数返回值可能不会引用任何值的时候，建议使用Option类型。
       ● Option类包含一个子类Some，当存在可以被引用的值的时候，就可
-      以使用Some来包含这个值，例如Some("Hadoop")。而None 则被声明
+      以使用Some来包含这个值，例如Some("Hadoop")。而None则被声明
       为一个对象，而不是一个类，表示没有值。
   */
     // 创建一个映射
-    val projects = Map("hadoop" -> 1,"Spark"->2,"Hbase" -> 3)
+    val projects = Map("Hadoop" -> 1,"Spark"->2,"HBase" -> 3)
     // 映射中取出key为"hadoop"对应的值,键是存在的,可以取到值,并且取到的值会被包含在some当中
-    println(projects.get("hadoop"))
+    println(projects.get("Hadoop"))
     // "hive"是不存在的，返回None对象
-    println(projects.get("flume"))
+    println(projects.get("Flume"))
 
     // Option类型还提供了getOrElse方法，这个方法在这个Option是Some的实例时
     // 返回对应的值，而在是None的实例时返回传入的参数。例如:
     println("---------------------------------")
-    val res = projects.get("flume")
+    val res = projects.get("Flume")
     println(res)
-    println(projects.getOrElse("flume","No projects"))
+    println(projects.getOrElse("Flume","No projects"))
 /*
     在Scala中，使用Option的情形是非常频繁的。在Scala里，经常会用到
     Option[T]类型，其中的T可以是Sting或Int或其他各种数据类型。
     Option[T]实际上就是一个容器，我们可以把它看做是一个集合，只不过这个集
     合中要么只包含一个元素(被包装在Some中返回)，要么就不存在元素(返回None)。
-    既然是一个集合，我们当然可以对它使用map、foreach或者flter等方法。比如:
+    既然是一个集合，我们当然可以对它使用map、foreach或者filter等方法。比如:
 */
     // foreach遍历遇到None时，什么都不做
     println("-------------------------------")
-    projects.get("hadoop").foreach(println)
+    projects.get("Hadoop").foreach(println)
   }
 }
