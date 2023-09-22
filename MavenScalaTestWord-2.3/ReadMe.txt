@@ -1,14 +1,4 @@
 
-===================================
-
-To build this project use
-
-    mvn install
-
-To run this project
-
-    mvn exec:java
-
 /**
  * 第2小节主要介绍 面向对象编程基础
  * 具体包含2.1 --> 类
