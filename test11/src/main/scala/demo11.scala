@@ -3,8 +3,11 @@ import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 
 /**
- * @author: code_hlb
- * @date : 2023/12/9 22:47
+ * @BelongsProject: test11
+ * @BelongsPackage:
+ * @CreateTime : 2023/12/9 22:45
+ * @Description: spark RDD(弹性分布式数据集) 高级算子操作
+ * @Author: code_hlb
  */
 object demo11 {
 
