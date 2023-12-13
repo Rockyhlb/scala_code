@@ -183,4 +183,26 @@ object SparkSql {
     result.show
     result.explain
   }
+
+  // 把DF保存成文件
+  def main6(args: Array[String]): Unit = {
+    // 1、write.format()支持输出 json,parquet, jdbc, orc, libsvm, csv, text等格式文件
+    val peopleDF = spark.read.format("json").load("hdfs://hadoop100:9000/input/sqlTest/people.json")
+    peopleDF.show
+    // 选择name和age这两列，并使用write.format("csv").save()方法将结果保存为CSV文件
+    peopleDF.select("name", "age").write.format("csv").save(
+           "file:///opt/module/spark-2.1.0/testDir/newpeople.csv")
+    // 可以看到/opt/module/spark-2.1.0/testDir这个目录下面有个newpeople.csv文件夹，包含如下两个文件：
+    // part-00000-e27e7b21-15e8-43f1-8828-c7cc550a310c.csv 和 _SUCCESS
+    // 如果要再次把newpeople.csv中的数据加载到RDD中，可以直接使用newpeople.csv目录名称，
+    // 而不需要使用part-r-00000-33184449-cb15-454c-a30f-9bb43faccac1.csv 文件
+    val textFile = sc.textFile("file:///opt/module/spark-2.1.0/testDir/newpeople.csv")
+
+    // 2、将DataFrame转换为RDD（弹性分布式数据集）并使用saveAsTextFile()方法将RDD保存到指定路径中
+    peopleDF.select("name", "age").write.format("csv").save(
+      "file:///opt/module/spark-2.1.0/testDir/newpeople.csv")
+    peopleDF.rdd.saveAsTextFile("file:///opt/module/spark-2.1.0/testDir/newpeople.txt")
+    // 如果要再次把newpeople.txt中的数据加载到RDD中，可以直接使用newpeople.txt目录名称，而不需要使用part-00000文件
+    val textFile = sc.textFile("file://opt/module/spark-2.1.0/testDir/newpeople.txt")
+  }
 }
